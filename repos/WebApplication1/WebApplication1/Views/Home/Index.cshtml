@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script>
+    var input1 = prompt('단어입력','Message');
+    var input2 = prompt('정수 입력(-100에서 100사이)', 'Number');
+    if (input2 < -100 || input2 > 100)
+        var input2 = prompt('정수 입력(-100에서 100사이)', 'Number');
+    var input3 = prompt('L또는 R 입력', 'Message');
+    input3 = input3.toUpperCase();
+
+    var Num = input2;
+    if (input2 > input1.length) {
+        var Num = input2 % input1.length;
+    }
+
+    document.write(input1, " ", input2, " ", input3);
+    document.write('<br>')
+
+    if (input3 == "L") {
+        Left();
+    }
+
+    if (input3 == "R") {
+        Right();
+    }
+
+    function Left() {
+        if (Num > 0) {
+            input1 = input1.substring(Num) + input1.substring(0, Num);
+            document.write(input1);
+        }
+        else if (Num < 0){
+            Num = -Num;
+            Right();
+        }
+    }
+
+    function Right() {
+        if (Num > 0) {
+            input1 = input1.substring(input1.length - Num) + input1.substring(0, input1.length - Num);
+            document.write(input1);
+        }
+        else if(Num<0){
+            Num = -Num;
+            Left();
+        }
+    }
+</script>
